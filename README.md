@@ -1,4 +1,5 @@
-# react-starter
+# recipe-app by hhz
 
+can search meals by categories/ areas/ keywords
 
-packages => react-router-dom , redux tool kit , react icons , tailwind css
+meal details, lazy img components, random meal,...
