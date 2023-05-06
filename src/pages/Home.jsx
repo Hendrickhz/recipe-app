@@ -47,6 +47,7 @@ const Home = () => {
     fetchRandomMeal();
     fetchSeafood();
     fetchCanadianMeals();
+    document.title="Flavour Fiesta"
   }, []);
 
   if (!loadingRandomMeal && !loadingSeafood && !loadingCanadianMeals) {

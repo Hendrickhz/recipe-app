@@ -17,7 +17,9 @@ const MealsByCategory = () => {
     setMeals(mealsData);
     setLoading(false);
   };
-  
+  useEffect(() => {
+    document.title= `Category | ${category}`
+  }, [meals]);
 
   useEffect(() => {
     fetchMealsByCategory();

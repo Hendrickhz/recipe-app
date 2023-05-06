@@ -33,8 +33,12 @@ const MealDetails = () => {
   }
 
   useEffect(() => {
+ 
+    document.title= `Meal | ${meal.strMeal}`
+  }, [meal]);
+  useEffect(()=>{
     fetchMealDetails();
-  }, []);
+  },[])
   if (loading) {
     return (
       <div className=" w-full flex justify-center items-center min-h-[85vh]">

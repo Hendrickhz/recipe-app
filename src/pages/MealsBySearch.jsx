@@ -17,6 +17,9 @@ const MealsBySearch = () => {
     setLoading(false);
   };
   useEffect(() => {
+    document.title= `Search | ${name}`
+  }, [searchMeals]);
+  useEffect(() => {
     fetchSearchMeals();
   }, [name]);
   if (loading) {

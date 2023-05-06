@@ -16,6 +16,9 @@ const MealsByArea = () => {
       setMeals(mealsData);
       setLoading(false)
     };
+    useEffect(() => {
+      document.title= `Area | ${area}`
+    }, [meals]);
 
     useEffect(() => {
         fetchMealsByArea();
