@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Categories from "./Categories";
 import Areas from "./Areas";
@@ -24,6 +24,9 @@ const Navbar = () => {
   const collapseHandler= ()=>{
     collapse.toggle();
   }
+  useEffect(()=>{
+    collapse.collapse()
+  },[])
 
   return (
     <nav className=" shadow-sm  bg-white border-gray-200 dark:bg-gray-900">
@@ -37,6 +40,7 @@ const Navbar = () => {
         <div className="flex md:order-2">
           <button
             type="button"
+            onClick={collapseHandler}
             data-collapse-toggle="navbar-search"
             aria-controls="navbar-search"
             aria-expanded="false"
