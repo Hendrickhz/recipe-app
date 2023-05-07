@@ -9,7 +9,7 @@ const Navbar = () => {
 
   // optionally set a trigger element (eg. a button, hamburger icon)
   const $triggerEl = document.getElementById('triggerEl');
-  const collapse = new Collapse($targetEl, $triggerEl);
+  const collapse = $targetEl ? new Collapse($targetEl, $triggerEl) : null;
   const [search, setSearch] = useState("");
   const nav = useNavigate();
   const searchFormHandler = (e) => {
@@ -22,7 +22,7 @@ const Navbar = () => {
     }
   };
   const collapseHandler= ()=>{
-    collapse.toggle();
+    collapse?.toggle();
   }
   
 
