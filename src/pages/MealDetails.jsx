@@ -20,6 +20,9 @@ const MealDetails = () => {
     setMeal(data.meals[0]);
     setLoading(false);
   };
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
   const ingredients = [];
   for (let i = 1; i <= 20; i++) {
     // assuming no more than 20 ingredients per meal
@@ -33,11 +36,12 @@ const MealDetails = () => {
   }
 
   useEffect(() => {
- 
+    scrollToTop()
     document.title= `Meal | ${meal.strMeal}`
   }, [meal]);
   useEffect(()=>{
     fetchMealDetails();
+    
   },[])
   if (loading) {
     return (

@@ -17,9 +17,16 @@ const MealsByCategory = () => {
     setMeals(mealsData);
     setLoading(false);
   };
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+  useEffect(()=>{
+    scrollToTop()
+  },[])
   useEffect(() => {
     document.title= `Category | ${category}`
   }, [meals]);
+
 
   useEffect(() => {
     fetchMealsByCategory();

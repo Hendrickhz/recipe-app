@@ -16,8 +16,14 @@ const MealsBySearch = () => {
     setSearchMeals(data.meals);
     setLoading(false);
   };
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
   useEffect(() => {
-    document.title= `Search | ${name}`
+    scrollToTop();
+  }, []);
+  useEffect(() => {
+    document.title = `Search | ${name}`;
   }, [searchMeals]);
   useEffect(() => {
     fetchSearchMeals();
@@ -30,9 +36,14 @@ const MealsBySearch = () => {
     );
   } else if (searchMeals == null) {
     return (
-      <div className="lg:mb-32 mb-52 w-[90%] mx-auto md:w-[80%] flex justify-center items-center min-h-[70vh]">
-        <NoMealFound/>
-      </div>
+      <>
+        <p className=" w-[90%] mx-auto md:w-[80%]  font-semibold">
+          Search Keyword: {name}
+        </p>
+        <div className="lg:mb-32 mb-52 w-[90%] mx-auto md:w-[80%] flex justify-center items-center min-h-[70vh]">
+          <NoMealFound key={name} />
+        </div>
+      </>
     );
   } else {
     return (

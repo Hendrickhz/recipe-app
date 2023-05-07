@@ -16,9 +16,16 @@ const MealsByArea = () => {
       setMeals(mealsData);
       setLoading(false)
     };
+    const scrollToTop = () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+    useEffect(()=>{
+      scrollToTop()
+    },[])
     useEffect(() => {
       document.title= `Area | ${area}`
     }, [meals]);
+    
 
     useEffect(() => {
         fetchMealsByArea();

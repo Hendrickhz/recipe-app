@@ -14,6 +14,7 @@ const Home = () => {
   const [seaFood, setSeaFood] = useState([]);
   const [canadianMeals, setCanadiansMeals] = useState([]);
   const fetchRandomMeal = async () => {
+    
     try {
       const { data } = await axios.get(
         `https://www.themealdb.com/api/json/v1/1/random.php`
@@ -34,6 +35,9 @@ const Home = () => {
     setSeaFood(mealsArray);
     setLoadingSeafood(false);
   };
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   const fetchCanadianMeals = async () => {
     const { data } = await axios.get(
@@ -48,6 +52,7 @@ const Home = () => {
     fetchSeafood();
     fetchCanadianMeals();
     document.title="Flavour Fiesta"
+    scrollToTop()
   }, []);
 
   if (!loadingRandomMeal && !loadingSeafood && !loadingCanadianMeals) {
