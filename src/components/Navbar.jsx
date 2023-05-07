@@ -24,9 +24,7 @@ const Navbar = () => {
   const collapseHandler= ()=>{
     collapse.toggle();
   }
-  useEffect(()=>{
-    collapse.collapse()
-  },[])
+  
 
   return (
     <nav className=" shadow-sm  bg-white border-gray-200 dark:bg-gray-900">
