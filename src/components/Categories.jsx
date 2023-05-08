@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Select } from "@mantine/core";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-const Categories = ({collapse}) => {
+const Categories = ({navOpen, setNavOpen}) => {
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
 
@@ -28,7 +28,9 @@ const Categories = ({collapse}) => {
     if (value !== null) {
       nav(`/category/${value}`);
       setSelectedCategory(null)
-      collapse?.collapse();
+      if (navOpen) {
+        setNavOpen(false);
+      }
     }
   };
   return (

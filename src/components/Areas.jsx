@@ -3,7 +3,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Areas = ({collapse}) => {
+const Areas = ({navOpen,setNavOpen}) => {
   const [areas, setAreas] = useState([]);
   const [selectedArea, setSelectedArea]= useState(null)
 
@@ -30,7 +30,10 @@ const Areas = ({collapse}) => {
     if (value !== null) {
       nav(`/area/${value}`);
       setSelectedArea(null)
-      collapse?.collapse()
+      if (navOpen) {
+        setNavOpen(false);
+      }
+  
     }
   };
   return (
