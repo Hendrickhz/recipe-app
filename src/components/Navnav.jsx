@@ -1,62 +1,80 @@
+import {  TextInput } from "@mantine/core";
 import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import Categories from "./Categories";
+import Areas from "./Areas";
+import { FiMenu } from "react-icons/fi";
+import { GrClose } from "react-icons/gr";
 
 const nav2 = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
+  const [search, setSearch] = useState("");
+  const nav = useNavigate();
+  const searchFormHandler = (e) => {
+    e.preventDefault();
+    if (search !== null && search.trim() !== "") {
+      nav(`/search/${search}`);
+      setSearch("");
+    }
+  };
   return (
     <div>
-      <nav className="relative flex flex-wrap items-center justify-between px-2 py-3 mb-3">
-        <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
-          <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
-            <a
-              className="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase "
-              href="#pablo"
+      <nav className="  bg-white  px-2 py-5 ">
+        <div className="w-[90%] mx-auto md:w-[80%]">
+          <div className="  container mx-auto flex flex-wrap ">
+            <div className="w-full flex gap-8 items-center justify-between  ">
+              <Link to={"/"} className="flex items-center">
+                <img src="\recipe.png" className="h-8 mr-3" alt="App Logo" />
+                <span className=" text-xl lg:text-2xl font-semibold ">
+                  Flavour Fiesta
+                </span>
+              </Link>
+              <button
+                className="  text-xl leading-none px-3 py-1   rounded  block md:hidden outline-none focus:outline-none"
+                type="button"
+                onClick={() => setNavbarOpen(!navbarOpen)}
+              >
+                {navbarOpen ? <GrClose /> : <FiMenu />}
+              </button>
+              <div className="relative md:inline hidden md:mt-0 mt-4 w-56 lg:w-96 ">
+                <form>
+                  <TextInput
+                    onChange={(e) => setSearch(e.target.value)}
+                    type="text"
+                    id="search-navbar"
+                    placeholder="Search recipes..."
+                  />
+                </form>
+              </div>
+            </div>
+            <div
+              className={
+                "md::hidden flex-grow items-center duration-300 " +
+                (navbarOpen ? " flex" : " hidden")
+              }
+              id="example-navbar-danger"
             >
-              slate Tailwind Starter Kit
-            </a>
-            <button
-              className=" cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
-              type="button"
-              onClick={() => setNavbarOpen(!navbarOpen)}
-            >
-              <i className="fas fa-bars"></i>Close
-            </button>
-          </div>
-          <div
-            className={
-              "lg:flex flex-grow items-center" +
-              (navbarOpen ? " flex" : " hidden")
-            }
-            id="example-navbar-danger"
-          >
-            <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
-              <li className="nav-item">
-                <a
-                  className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug  hover:opacity-75"
-                  href="#pablo"
-                >
-                  <i className="fab fa-facebook-square text-lg leading-lg  opacity-75"></i>
-                  <span className="ml-2">Share</span>
-                </a>
-              </li>
-              <li className="nav-item">
-                <a
-                  className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug  hover:opacity-75"
-                  href="#pablo"
-                >
-                  <i className="fab fa-twitter text-lg leading-lg  opacity-75"></i>
-                  <span className="ml-2">Tweet</span>
-                </a>
-              </li>
-              <li className="nav-item">
-                <a
-                  className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug  hover:opacity-75"
-                  href="#pablo"
-                >
-                  <i className="fab fa-pinterest text-lg leading-lg  opacity-75"></i>
-                  <span className="ml-2">Pin</span>
-                </a>
-              </li>
-            </ul>
+              <ul className="flex flex-col  md:w-[80%] w-[90%] mx-auto list-none gap-2">
+                <li className="nav-item ">
+                  <div className="relative md:mt-0 mt-4  w-full">
+                    <form>
+                      <TextInput
+                        onChange={(e) => setSearch(e.target.value)}
+                        type="text"
+                        id="search-navbar"
+                        placeholder="Search recipes..."
+                      />
+                    </form>
+                  </div>
+                </li>
+                <li className="nav-item ">
+                  <Categories />
+                </li>
+                <li className="nav-item">
+                  <Areas />
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </nav>
