@@ -1,13 +1,18 @@
-.child{
+.parent .child {
     opacity: 0;
-    transition:  all 0.3s;
-}
-.parent:hover .child{
-    opacity: 1;
-}
-.parent:hover img{
-    opacity: 0.55;
-}
-img{
     transition: all 0.3s;
-}
+  }
+  
+  .parent:hover .child {
+    opacity: 1 !important;
+  }
+  
+  .parent img {
+    transition: all 0.3s;
+    opacity: 1;
+  }
+  
+  .parent:hover img {
+    opacity: 0.55;
+    filter: blur(2px);
+  }

@@ -63,10 +63,10 @@ const Home = () => {
           <div className="py-5">
             <RandomMeal randomMeal={randomMeal} />
           </div>
-          <div className="">
+          <div className=" border-b-2 border-t-2 py-4">
             <SeafoodMeals meals={seaFood} />
           </div>
-          <div className="mb-20">
+          <div className="mb-20 py-4">
             <CanadianMeals meals={canadianMeals} />
           </div>
         </div>
